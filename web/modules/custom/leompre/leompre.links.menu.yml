@@ -1,0 +1,6 @@
+leompre.settings_form:
+  title: leompre
+  description: Configure leompre.
+  parent: system.admin_config_system
+  route_name: leompre.settings_form
+  weight: 10

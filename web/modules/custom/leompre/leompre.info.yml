@@ -1,0 +1,6 @@
+name: leompre
+type: module
+description: drupal test
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
