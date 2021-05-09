@@ -1,0 +1,46 @@
+name: leo-serempre
+
+recipe: pantheon
+
+config:
+  framework: drupal8
+  site: leo-serempre
+  id: 914e5154-7c96-4fef-9d8d-317ff8e70798
+  xdebug: true
+  config:
+    php: config/php.ini
+  # Disable the SOLR index
+  index: false
+  # Disable the VARNISH edge
+  edge: false
+  # Disable the REDIS cache
+  cache: false
+
+services:
+  database:
+    type: mariadb:10.5
+    portforward: 32850
+  appserver:
+    run_as_root:
+      - apt-get update
+      - curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+      - apt-get install -y nodejs
+      - npm install -g gulp-cli gulp sass
+    overrides:
+      environment:
+        LANDO_HOST_IP: ${WSL_IP}
+        XDEBUG_CONFIG: remote_autostart=1 remote_enable=1 remote_host=${WSL_IP}
+
+tooling:
+  drush:
+    service: appserver
+    env:
+      DRUSH_OPTIONS_URI: "https://leo-serempre.lndo.site"
+  npm:
+    service: appserver
+  node:
+    service: appserver
+  gulp:
+    service: appserver
+  sass:
+    service: appserver
