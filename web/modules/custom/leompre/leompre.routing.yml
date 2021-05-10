@@ -1,10 +1,10 @@
-leompre.example:
-  path: '/leompre/example'
+leompre.registro:
+  path: '/usuario/registro'
   defaults:
-    _title: 'Example'
-    _controller: '\Drupal\leompre\Controller\LeompreController::build'
+    _title: 'Registro Usuario'
+    _form: '\Drupal\leompre\Form\userRegister'
   requirements:
-    _permission: 'access content'
+    _permission: 'leompre usuario registro'
 
 leompre.settings_form:
   path: '/admin/config/system/leompre'

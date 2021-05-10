@@ -40,6 +40,9 @@ function leompre_schema() {
       ],
     ],
     'primary key' => ['id'],
+    'indexes' => [
+      'name' => ['name'],
+    ],
   ];
 
   return $schema;

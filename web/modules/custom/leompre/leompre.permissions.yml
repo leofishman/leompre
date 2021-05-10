@@ -2,3 +2,7 @@ administer leompre configuration:
   title: 'Administer leompre configuration'
   description: 'Optional description.'
   restrict access: true
+leompre usuario registro:
+  title: 'leompre user register'
+  description: 'Acceso al registro manual de usuarios.'
+  restrict access: true
