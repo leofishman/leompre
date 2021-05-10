@@ -28,10 +28,10 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['example'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Example'),
-      '#default_value' => $this->config('leompre.settings')->get('example'),
+    $form['limit'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Cuantos usuarios se muestran por pagina'),
+      '#default_value' => $this->config('leompre.settings')->get('limit') ? $this->config('leompre.settings')->get('limit') : 10,
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -40,9 +40,6 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    if ($form_state->getValue('example') != 'example') {
-      $form_state->setErrorByName('example', $this->t('The value is not correct.'));
-    }
     parent::validateForm($form, $form_state);
   }
 
@@ -51,7 +48,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('leompre.settings')
-      ->set('example', $form_state->getValue('example'))
+      ->set('limit', $form_state->getValue('limit'))
       ->save();
     parent::submitForm($form, $form_state);
   }

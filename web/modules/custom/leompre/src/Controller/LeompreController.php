@@ -10,16 +10,34 @@ use Drupal\Core\Controller\ControllerBase;
 class LeompreController extends ControllerBase {
 
   /**
-   * Builds the response.
+   * Lista nombres.
    */
-  public function build() {
+  public function consulta() {
+    $config = $this->config('leompre.settings');
 
-    $build['content'] = [
-      '#type' => 'item',
-      '#markup' => $this->t('It works!'),
+    $limit = $config->get('limit');
+    $database = \Drupal::database();
+    $query = $database->select('myusers', 'mu');
+    $query->fields('mu', ['name']);
+    $names = $query->extend('Drupal\\Core\\Database\\Query\\PagerSelectExtender')->limit($limit)->execute();
+
+    $header = [$this->t('Nombre')];
+
+    foreach($names as $name) {
+      $row = [$name->name];
+      $rows[] = $row;
+    }
+
+    $build = [
+        'table' => [
+          '#theme' => 'table',
+          '#header' => $header,
+          '#rows' => $rows,
+      ],
     ];
-
+    $build['pager'] = array(
+        '#type' => 'pager'
+    );
     return $build;
   }
-
 }

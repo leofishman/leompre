@@ -16,13 +16,6 @@ use Drupal\Core\Ajax\HtmlCommand;
 class UserRegister extends FormBase {
 
   /**
-   * Counter keeping track of the sequence of method invocation.
-   *
-   * @var int
-   */
-  protected static $sequenceCounter = 0;
-
-  /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {

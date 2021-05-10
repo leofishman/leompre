@@ -6,6 +6,14 @@ leompre.registro:
   requirements:
     _permission: 'leompre usuario registro'
 
+leompre.consulta:
+  path: '/usuario/consulta'
+  defaults:
+    _title: 'Consulta Usuarios'
+    _controller: '\Drupal\leompre\Controller\LeompreController::consulta'
+  requirements:
+    _permission: 'leompre usuario consulta'
+
 leompre.settings_form:
   path: '/admin/config/system/leompre'
   defaults:
