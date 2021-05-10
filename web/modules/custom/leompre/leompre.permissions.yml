@@ -6,3 +6,8 @@ leompre usuario registro:
   title: 'leompre user register'
   description: 'Acceso al registro manual de usuarios.'
   restrict access: true
+leompre usuario consulta:
+  title: 'leompre user list'
+  description: 'Acceso al listado de usuarios.'
+  restrict access: true
+
