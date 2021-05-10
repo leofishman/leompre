@@ -1,0 +1,15 @@
+leompre.registro:
+  path: '/usuario/registro'
+  defaults:
+    _title: 'Registro Usuario'
+    _form: '\Drupal\leompre\Form\userRegister'
+  requirements:
+    _permission: 'leompre usuario registro'
+
+leompre.settings_form:
+  path: '/admin/config/system/leompre'
+  defaults:
+    _title: 'leompre settings'
+    _form: 'Drupal\leompre\Form\SettingsForm'
+  requirements:
+    _permission: 'administer leompre configuration'

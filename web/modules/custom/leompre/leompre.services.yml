@@ -1,0 +1,6 @@
+services:
+  leompre.event_subscriber:
+    class: Drupal\leompre\EventSubscriber\LeompreSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
