@@ -13,7 +13,9 @@ class LeompreController extends ControllerBase {
    * Lista nombres.
    */
   public function consulta() {
-    $limit = 10;
+    $config = $this->config('leompre.settings');
+
+    $limit = $config->get('limit');
     $database = \Drupal::database();
     $query = $database->select('myusers', 'mu');
     $query->fields('mu', ['name']);
