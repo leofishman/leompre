@@ -2,7 +2,7 @@ leompre.registro:
   path: '/usuario/registro'
   defaults:
     _title: 'Registro Usuario'
-    _form: '\Drupal\leompre\Form\userRegister'
+    _form: '\Drupal\leompre\Form\UserRegister'
   requirements:
     _permission: 'leompre usuario registro'
 
@@ -21,6 +21,14 @@ leompre.consultaxls:
     _controller: '\Drupal\leompre\Controller\LeompreController::consultaxls'
   requirements:
     _permission: 'leompre usuario consulta'
+
+leompre.importar:
+  path: '/usuario/importar'
+  defaults:
+    _title: 'Importacion Usuarios'
+    _form: '\Drupal\leompre\Form\Importar'
+  requirements:
+    _permission: 'leompre usuario importar'
 
 leompre.settings_form:
   path: '/admin/config/system/leompre'

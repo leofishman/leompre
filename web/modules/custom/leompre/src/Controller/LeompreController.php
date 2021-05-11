@@ -4,8 +4,6 @@ namespace Drupal\leompre\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\Response;
-use Drupal\Core\Entity\Query\QueryFactory;
-
 
 /**
  * Returns responses for leompre routes.
@@ -16,21 +14,24 @@ class LeompreController extends ControllerBase
   /**
    * Lista nombres.
    */
-  public function consulta()
-  {
+  public function consulta() {
+
     $config = $this->config('leompre.settings');
 
-    $limit = $config->get('limit');
+    $limit = $config->get('limit') ? $config->get('limit') : 10;
     $database = \Drupal::database();
     $query = $database->select('myusers', 'mu');
     $query->fields('mu', ['name']);
     $names = $query->extend('Drupal\\Core\\Database\\Query\\PagerSelectExtender')->limit($limit)->execute();
-
     $header = [$this->t('Nombre')];
+    $rows = [];
+    if ($names) {
+      $header = [$this->t('Nombre')];
 
-    foreach ($names as $name) {
-      $row = [$name->name];
-      $rows[] = $row;
+      foreach ($names as $name) {
+        $row = [$name->name];
+        $rows[] = $row;
+      }
     }
 
     $build = [

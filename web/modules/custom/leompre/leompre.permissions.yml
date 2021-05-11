@@ -3,11 +3,15 @@ administer leompre configuration:
   description: 'Optional description.'
   restrict access: true
 leompre usuario registro:
-  title: 'leompre user register'
+  title: 'leompre userio registro'
+  description: 'Acceso al registro manual de usuarios.'
+  restrict access: true
+leompre usuario importar:
+  title: 'leompre usuario importar'
   description: 'Acceso al registro manual de usuarios.'
   restrict access: true
 leompre usuario consulta:
-  title: 'leompre user list'
+  title: 'leompre usurio consulta'
   description: 'Acceso al listado de usuarios.'
   restrict access: true
 
